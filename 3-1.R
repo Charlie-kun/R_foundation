@@ -16,3 +16,44 @@ var5
 var1+2  #Display for +2 each var1's numbers.
 
 var1+var2   #The sum of each element of var1 and var2.
+
+str1 <- "a"
+str1
+
+str2 <-"text"
+str2
+
+str3 <- "hello world"
+str3
+
+str4 <-c("a", "b", "c")
+str4
+
+str5 <- c("Hello!", "World", "is", "good!")
+str5
+
+#Impossible str Calculate 
+str1+2
+
+#Search for Numbers              
+x <-c(1,2,3)
+x
+
+mean(x)
+
+max(x)
+
+min(x)
+
+#Sum words 
+paste(str5, collapse=",")
+
+paste(str5, collapse=" ")
+
+x_mean <- mean(x)
+
+x_mean
+
+str5_paste <- paste(str5, collapse=" ")
+
+str5_paste
