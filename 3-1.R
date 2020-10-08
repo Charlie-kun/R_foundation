@@ -57,3 +57,15 @@ x_mean
 str5_paste <- paste(str5, collapse=" ")
 
 str5_paste
+
+install.packkage("ggplot2")
+
+#ggplot2 packkage load
+library(ggplot2)
+
+# Make some alphabet group
+x <-c("a", "a", "b", "c")
+x
+
+#graf display
+qplot(x)
