@@ -42,3 +42,19 @@ df_new
 
 df_new<-rename(df_new, v2=var2) #var2 change v2
 
+#Make Derived Variable
+df<-data.frame(var1=c(4,3,8),
+               var2=c(2,6,1))
+
+df
+
+df$var_sum<-df$var1+df$var2 #make sum derived variable
+
+df
+
+df$var_mean<-(df$var1+df$var2)/2
+
+df
+
+mpg$total<-(mpg$cty+mpg$hwy)/2  #total efficiency
+head(mpg)
