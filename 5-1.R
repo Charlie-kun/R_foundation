@@ -58,3 +58,18 @@ df
 
 mpg$total<-(mpg$cty+mpg$hwy)/2  #total efficiency
 head(mpg)
+
+#get a standard
+summary(mpg$total)
+
+hist(mpg$total)   #drow histogram
+
+#Conditional statments
+mpg$test<-ifelse(mpg$total >= 20, "pass", "fail")
+
+head(mpg,20)
+
+table(mpg$test) #frequency
+
+library(ggplot2)
+qplot(mpg$test)
