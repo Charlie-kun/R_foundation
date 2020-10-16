@@ -11,3 +11,24 @@ exam %>% filter(class!=1)
 exam%>% filter(class==1 | math>=50)
 
 exam%>% filter(class==1 & math>=50)
+
+exam %>% select(math)
+
+exam %>% select(class, math, english)
+
+exam %>% select(-math)
+
+exam %>% filter(class==1) %>% select(english)
+
+exam %>%
+  filter(class==1) %>%
+  select(english)
+
+
+exam %>%
+  select(id,math) %>%
+  head
+
+exam %>%
+  select(id,math) %>%
+  head(10)
