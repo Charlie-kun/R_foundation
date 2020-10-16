@@ -32,3 +32,9 @@ exam %>%
 exam %>%
   select(id,math) %>%
   head(10)
+
+exam %>% arrange(math)  #increase data
+
+exam %>% arrange(class, math)  #increase two data
+
+exam %>% arrange(desc(math))  #decrease data
