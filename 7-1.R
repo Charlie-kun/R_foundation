@@ -39,7 +39,7 @@ mean(df$score,na.rm=T)
 
 sum(df$score,na.rm=T)
 
-exam <- read.csv("./github/csv_exam.csv")
+exam <- read.csv("./github/csv_exam.csv")     #path
 
 exam[c(3,8,15), "math"] <-NA
 
