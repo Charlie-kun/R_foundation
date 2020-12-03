@@ -34,3 +34,26 @@ df_nomiss
 df_nomiss2 <- na.omit(df)   #delete all missing vlaue
 
 df_nomiss2
+
+mean(df$score,na.rm=T)
+
+sum(df$score,na.rm=T)
+
+exam <- read.csv("./github/csv_exam.csv")
+
+exam[c(3,8,15), "math"] <-NA
+
+exam
+
+exam %>% summarise(mean_math=mean(math))
+
+exam %>% summarise(mean_math=mean(math, na.rm=T), sum_math=sum(math, na.rm = T), median_math=median(math, na.rm=T))
+
+mean(exam$math, na.rm=T)
+
+exam $math <- ifelse(is.na(exam$math), 55, exam$math)   #change value na->55
+table(is.na(exam$math))
+
+exam
+
+mean(exam$math)
