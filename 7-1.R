@@ -23,6 +23,7 @@ df %>% filter(is.na(score))   # Na score value print
 df %>% filter(!is.na(score))   # not Na score value print
 
 df_nomiss <- df%>% filter(!is.na(score))
+
 mean(df_nomiss$score)
 
 sum(df_nomiss$score)
@@ -83,3 +84,15 @@ outlier
 outlier %>%
   filter(!is.na(sex) & !is.na(score)) %>% group_by(sex) %>%
   summarise(mean_score=mean(score))
+
+
+mpg <- as.data.frame(ggplot2::mpg)
+
+boxplot(mpg$hwy)$stats
+
+mpg$hwt <- ifelse(mpg$hwy <12|mpg$hwy>37, NA, mpg$hwy)
+table(is.na(mpg$hwy))
+
+mpg %>%
+  group_by(drv) %>%
+  summarise(mean_hwy=mean(hwy, na.rm=T))
