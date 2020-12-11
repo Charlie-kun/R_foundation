@@ -23,3 +23,5 @@ ggplot(data=df_mpg, aes(x=reorder(drv, -mean_hwy), y=mean_hwy))+geom_col()
 ggplot(data=mpg, aes(x=drv))+geom_bar()
 
 ggplot(data=mpg,aes(x=hwy))+geom_bar()
+
+ggplot(data=mpg,aes(x=hwy))+geom_boxplot()
