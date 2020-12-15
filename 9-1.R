@@ -24,3 +24,14 @@ welfare <- rename(welfare,
                   income=p1002_8aq1,
                   code_job=h10_eco9,
                   code_region=h10_reg7)
+
+class(welfare$sex)
+
+table(welfare$sex)
+
+welfare$sex <- ifelse(welfare$sex == 9, NA, welfare$sex)
+table(is.na(welfare$sex))
+
+welfare$sex <- ifelse(welfare$sex ==1, "male", "female")
+table(welfare$sex)
+qplot(welfare$sex)
