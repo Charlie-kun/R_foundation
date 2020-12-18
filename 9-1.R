@@ -58,3 +58,20 @@ sex_income <-welfare %>%
 sex_income
 
 ggplot(data=sex_income, aes(x=sex,y=mean_income))+geom_col()
+
+class(welfare$birth)
+
+summary(welfare$birth)
+
+qplot(welfare$birth)
+
+table(is.na(welfare$birth))
+
+welfare$birth <-ifelse(welfare$birth == 9999, NA, welfare$birth)
+table(is.na(welfare$birth))
+
+welfare$age <- 2015-welfare$birth+1
+
+summary(welfare$age)
+
+qplot(welfare$age)
