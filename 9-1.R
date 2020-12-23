@@ -194,3 +194,26 @@ ggplot(data=job_male, aes(x=reorder(job,n), y=n))+
 ggplot(data=job_female, aes(x=reorder(job,n), y=n))+
   geom_col() + 
   coord_flip()
+
+class(welfare$religion)
+
+table(welfare$religion)
+
+welfare$religion <-ifelse(welfare$religion ==1, "yes", "no")
+
+table(welfare$religion)
+
+qplot(welfare$religion)
+
+class(welfare$marriage)
+
+table(welfare$marriage)
+
+welfare$group_marriage <-ifelse(welfare$marriage==1, "marriage",
+                                ifelse(welfare$marriage==3, "divorce", NA))
+
+table(welfare$group_marriage)
+
+table(is.na(welfare$group_marriage))
+
+qplot(welfare$group_marriage)
