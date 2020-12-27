@@ -1,4 +1,4 @@
-install.packages("foreign")
+#install.packages("foreign")
 
 library(foreign)
 library(dplyr)
@@ -240,3 +240,26 @@ divorce <- religion_marriage %>%
 divorce
 
 ggplot(data=divorce, aes(x=religion, y=pct))+geom_col()
+
+ageg_mariage <- welfare %>%
+  filter(!is.na(group_marriage)) %>%
+  group_by(ageg,group_marriage) %>%
+  summarise(n=n()) %>%
+  mutate(tot_group = sum(n)) %>%
+  mutate(pct=round(n/tot_group*100, 1))
+
+ageg_mariage
+
+ageg_mariage <-welfare %>%
+  filter(!is.na(group_marriage)) %>%
+  count(ageg,group_marriage) %>%
+  group_by(ageg) %>%
+  mutate(pct=round(n/sum(n)*100, 1))
+
+ageg_divorce <- ageg_mariage %>%
+  filter(ageg != "young"& group_marriage == "divorce")  %>%
+  select(ageg,pct)
+
+ageg_divorce
+
+ggplot(data=ageg_divorce, aes(x=ageg, y=pct))+geom_col()
