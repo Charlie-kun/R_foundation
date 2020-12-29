@@ -286,3 +286,49 @@ df_divorce <- ageg_religion_marriage %>%
 df_divorce
 
 ggplot(data=df_divorce, aes(x=ageg, y=pct, fill=religion)) + geom_col(posision="dodge")
+
+
+class(welfare$code_region)
+
+table(welfare$code_region)
+
+list_region <- data.frame(code_region = c(1:7), region =c("seoul", 
+                                                          "metropolis", 
+                                                          "newyork", 
+                                                          "Busan", 
+                                                          "barcellona", 
+                                                          "Bandoung", 
+                                                          "DaeJeon"))
+list_region
+
+welfare <- left_join(welfare, list_region, id="code_region") 
+
+welfare %>%
+  select(code_region, region) %>%
+  head  
+
+region_ageg <- welfare %>%
+  group_by(region, ageg) %>%
+  summarise(n=n()) %>%
+  mutate(tot_group=sum(n))%>%
+  mutate(pct=round(n/tot_group*100, 2))
+
+head(region_ageg)
+
+region_ageg <-welfare %>%
+  count(region,ageg) %>%
+  group_by(region) %>%
+  mutate(pct=round(n/sum(n)*100, 2))
+
+ggplot(data=region_ageg, aes(x=region, y=pct, fill=ageg))+geom_col()+coord_flip()
+
+list_order_old <- region_ageg %>%
+  filter(ageg=="old") %>%
+  arrange(pct)
+
+list_order_old
+
+order <- list_order_old$region
+order
+
+ggplot(data=region_ageg, aes(x=region, y=pct, fill=ageg))+geom_col()+coord_flip() + scale_x_discrete((limits=order))
