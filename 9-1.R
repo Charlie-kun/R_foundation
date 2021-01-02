@@ -332,3 +332,15 @@ order <- list_order_old$region
 order
 
 ggplot(data=region_ageg, aes(x=region, y=pct, fill=ageg))+geom_col()+coord_flip() + scale_x_discrete((limits=order))
+
+class(region_ageg$ageg)
+
+levels(region_ageg$ageg)
+
+region_ageg$ageg <- factor(region_ageg$ageg, level=c("old", "middle", "young"))
+
+class(region_ageg$ageg)
+
+levels(region_ageg$ageg)
+
+ggplot(data=region_ageg, aes(x=region, y=pct, fill=ageg))+geom_col()+coord_flip()+ scale_x_discrete(limits=order)
