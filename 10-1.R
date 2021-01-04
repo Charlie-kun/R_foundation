@@ -14,7 +14,25 @@ useNIADic()
 txt <- readLines("github/hiphop.txt")
 head(txt)
 
-install.packages("stringr")
+#install.packages("stringr")
 library(stringr)
 
 txt <- str_replace_all(txt,"\\W", " ")
+
+
+extractNoun("대한민국의 영토는 한반도와 그 부속도서로 한다")
+
+nouns <-extractNoun(txt)
+
+wordcount <-table(unlist(nouns))
+
+df_word <-as.data.frame(wordcount, stringsAsFactors = F)
+
+df_word <-rename(df_word, word =Var1, freq=Freq)
+
+df_word <- filter(df_word, nchar(word) >= 2)
+
+top_20 <-df_word %>% arrange(desc(freq))%>% head(20)
+
+top_20
+
