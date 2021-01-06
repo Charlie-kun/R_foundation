@@ -66,3 +66,27 @@ wordcloud(words=df_word$word,
           scale=c(4,0.3),
           colors = pal)
 
+
+twitter <- read.csv("github/twitter.csv", header = T,
+                    stringsAsFactors = F, fileEncoding = "UTF-8")
+
+twitter <-rename(twitter, no=번호, id=계정이름,
+                 date=작성일, tw=내용)
+twitter$tw<-str_replace_all(twitter$tw, "//W", " ")
+head(twitter$tw)
+
+nouns <- extractNoun(twitter$tw)
+
+wordcount <- table(unlist(nouns))
+
+df_word <- as.data.frame(wordcount, stringsAsFactors = F)
+
+df_word <-rename(df_word, word=Var1, freq=Freq)
+
+df_word <- filter(df_word, nchar(word) >= 2)
+
+top20 <- df_word %>%
+  arrange(desc(freq)) %>%
+  head(20)
+
+top20
